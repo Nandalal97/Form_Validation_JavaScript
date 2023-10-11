@@ -1,0 +1,150 @@
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <div class="row gx-5">
+                        <div class="col-xl-8 col-lg-7 col-12">
+                            <div class="contact-form">
+                                <h3>Send Us A Message</h3>
+
+                                <form method="post" action="" onsubmit="return contactValidate()" name="contact">
+                                    <!-- Name input -->
+                                    <div class="row">
+                                   
+                                        <div class="form-outline pb-3 col-md-6">
+                                            <label class="form-label">Name</label>
+                                            <input type="name" name="name" class="form-control" />
+                                            
+                                        </div>
+                                        <!-- phone number input -->
+                                        <div class="form-outline pb-3 col-md-6">
+                                            <label class="form-label" for="phone">Phone</label>
+                                            <input type="text" id="text" name="phone" class="form-control" />
+                                            
+                                        </div>
+                                        
+                                        
+                                        <!-- gender -->
+                                        <div class="form-outline pb-3 col-md-6">
+                                            <label class="form-label" for="gender">Gender</label>
+                                            <input type="text" id="gender" name="gender" class="form-control" />
+                                            <div class="error" id="genderErr"></div>
+                                        </div>
+                                        <div class="form-outline pb-3 col-md-6">
+                                            <label class="form-label" for="msg_subject">subject</label>
+                                            <input type="text" id="msg_subject" name="msg_subject" class="form-control" />
+                                            <div class="error" id="subjectErr"></div>
+                                        </div>
+                                    </div>
+                                    <!-- test Name -->
+                                    <div class="form-outline pb-3">
+                                        <label class="form-label">Details</label><br>
+                                        <textarea name="message" class="form-control"></textarea>
+                                        <div class="error" id="messageErr"></div>
+                                        <!-- <input type="text" id="details" name="details" class="form-control" /> -->
+                                    </div>
+                                    <button type="submit" name="submit" class="btn bg-blue btn-lg float-end">Submit</button>
+                                    <!-- Submit button -->
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-5 col-md-12">
+                            <div class="comp-map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29092.790269246678!2d88.066234222511!3d24.29074047824006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fa2e76c0d28599%3A0xdb8b84518df6393c!2sSagardighi%2C%20West%20Bengal%20742226!5e0!3m2!1sen!2sin!4v1692870651460!5m2!1sen!2sin">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+    <script>
+      // contact validation
+
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+  }
+  
+  // Defining a function to validate form 
+  function contactValidate() {
+    // Retrieving the values of form elements 
+    var name = document.contact.name.value;
+    var mobile = document.contact.phone.value;
+    var gender = document.contact.gender.value;
+    var msg_subject = document.contact.msg_subject.value;
+    var message = document.contact.message.value;
+ 
+  
+    // Defining error variables with a default value
+    var nameErr = mobileErr = genderErr =  subjectErr = messageErr = true;
+       // Validate name
+       if(name == "") {
+        printError("nameErr", "Please enter your name");
+    } else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(name) === false) {
+            printError("nameErr", "Please enter a valid name");
+        } else {
+            printError("nameErr", "");
+            nameErr = false;
+        }
+    }
+    // Validate email address
+//     if(email == "") {
+//       printError("emailErr", "Please enter your email address");
+//   } else {
+//       // Regular expression for basic email validation
+//       var regex = /^\S+@\S+\.\S+$/;
+//       if(regex.test(email) === false) {
+//           printError("emailErr", "Please enter a valid email address");
+//       } else{
+//           printError("emailErr", "");
+//           emailErr = false;
+//       }
+//   }
+   // Validate mobile number
+   if(mobile == "") {
+    printError("mobileErr", "Please enter your mobile number");
+  } else {
+    var regex = /^[1-9]\d{9}$/;
+    if(regex.test(mobile) === false) {
+        printError("mobileErr", "Please enter a valid 10 digit mobile number");
+    } else{
+        printError("mobileErr", "");
+        mobileErr = false;
+    }
+  }
+  
+  // Validate gender
+  if(gender == "") {
+    printError("genderErr", "Write your gender");
+  } else {
+    printError("genderErr", "");
+    genderErr = false;
+  }
+  
+
+  // date age
+  if(msg_subject == "") {
+    printError("subjectErr", "Please enter booking Date");
+  } else {
+    printError("subjectErr", "");
+    subjectErr = false;
+  }
+
+  // Validate age
+  if(message == "") {
+    printError("messageErr", "Please enter your Age");
+  } else {
+    printError("messageErr", "");
+    messageErr = false;
+  }
+  
+  // Prevent the form from being submitted if there are any errors
+  if((nameErr || mobileErr || genderErr || subjectErr || messageErr) == true) {
+    return false;
+  }
+  }
+    </script>
+  </body>
+</html>
